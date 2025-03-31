@@ -42,7 +42,7 @@ impl SwordMan {
     }
 
     fn health_decrease(&mut self, value: u8) {
-       self.health.saturating_sub(value);
+        self.health = self.health.saturating_sub(value);
     }
 }
 
@@ -71,7 +71,7 @@ impl Mage {
     }
 
     fn health_decrease(&mut self, value: u8) {
-       self.health.saturating_sub(value);
+        self.health = self.health.saturating_sub(value);
     }
 }
 
@@ -99,7 +99,7 @@ impl Healer {
         self.health += value;
     }
     fn health_decrease(&mut self, value: u8) {
-       self.health.saturating_sub(value);
+       self.health = self.health.saturating_sub(value);
     }
     
 }
@@ -114,16 +114,16 @@ fn main() {
     let mut player3 = Healer::new();
 
     player1.health_decrease(10);
-    player2.health_increase(10);
-    player3.health_increase(10);
+    player2.health_decrease(10);
+    player3.health_decrease(10);
 
     println!("Player 1 health: {}", player1.health);
     println!("Player 2 health: {}", player2.health);
     println!("Player 3 health: {}", player3.health);
 
     player1.health_increase(10);
-    player2.health_decrease(5);
-    player3.health_decrease(20);
+    player2.health_increase(5);
+    player3.health_increase(20);
 
     println!("Player 1 health: {}", player1.health);
     println!("Player 2 health: {}", player2.health);
